@@ -1,5 +1,5 @@
 [package]
-name = "golduck-example"
+name = "example"
 version = "0.1.0"
 authors = ["荀徒之 <kalxd@126.com>"]
 edition = "2018"
