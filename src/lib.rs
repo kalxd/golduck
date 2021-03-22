@@ -1,6 +1,24 @@
+//! gtk3工具类库。
+//!
+//! 该库并没有统一设计方向，目的仅仅为了简便一些常用代码，提供简单接口方便调用。
+//! 需要使用功能，需要到对应模块下寻找。
 use gio::prelude::{ApplicationExt, ApplicationExtManual};
 use gtk::Application;
 
+/// 简化gtk初始函数，仅提供一个`application_id`和初始成功后的回调即可。
+///
+/// ```
+/// // 这里就是成功回调，一切初始化都在这里。
+/// fn gui_main(app: &Application){
+/// 	let window = Window::new(WindowType::Toplevel);
+/// 	window.set_application(Some(app));
+/// 	window.show_all();
+/// }
+///
+/// fn main() {
+/// 	gtk_app_run("my.application.example", gui_main);
+/// }
+/// ```
 pub fn gtk_app_run<F>(id: &str, f: F)
 where
 	F: Fn(&Application) + 'static,
