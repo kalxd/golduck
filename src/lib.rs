@@ -30,3 +30,24 @@ where
 
 	app.run(&[]);
 }
+
+/// 自动生成`main`函数，并在其中调用[gtk_app_run]。
+///
+/// ```
+/// gtk_app_main!("id", gui_main);
+/// ```
+///
+/// ```
+/// fn main() {
+/// 	gtk_app_run("id", gui_main);
+/// }
+/// ```
+/// 以上两都写法等价。
+#[macro_export]
+macro_rules! gtk_app_main {
+	($id:literal, $f:ident) => {
+		fn main() {
+			golduck::gtk_app_run($id, $f);
+		}
+	};
+}
