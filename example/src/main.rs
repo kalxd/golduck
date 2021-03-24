@@ -1,10 +1,12 @@
 use gtk::prelude::*;
-use gtk::{Application, Window};
+use gtk::Application;
 
-use golduck::gtk_app_main;
+use golduck::{builder, builder::BuilderI, gtk_app_main};
 
 fn app_run(app: &Application) {
-	let window = Window::new(gtk::WindowType::Toplevel);
+	let builder = builder!("../ui/main.glade");
+
+	let window = builder.get_application_window_by("app");
 	window.set_application(Some(app));
 	window.show_all();
 }
