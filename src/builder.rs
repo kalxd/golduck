@@ -38,10 +38,10 @@ impl<W: IsA<gtk::Builder>> BuilderI for W {}
 /// 将ui文件预编译进程序。
 ///
 /// ```
-/// let builder: Builder = builder!("./main.glade");
+/// let builder: Builder = include_builder!("./main.glade");
 /// ```
 #[macro_export]
-macro_rules! builder {
+macro_rules! include_builder {
 	($path:literal) => {
 		gtk::Builder::from_string(include_str!($path))
 	};
