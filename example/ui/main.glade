@@ -24,6 +24,7 @@
         </child>
         <child>
           <object class="GtkStack" id="stack1">
+            <property name="name">c1</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="transition-type">slide-up-down</property>

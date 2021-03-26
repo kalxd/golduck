@@ -1,18 +1,35 @@
 use gtk::prelude::*;
-use gtk::Application;
+use gtk::{Application, Stack};
+
+use std::collections::HashMap;
+use std::rc::Rc;
 
 use golduck::{builder::BuilderI, gtk_app_main, include_builder};
 
-use std::collections::HashMap;
-
-mod is_page;
 mod page;
 
-use is_page::IsPage;
+use page::IsPage;
 
-#[derive(PartialEq, Eq, Hash)]
-enum PageType {
-	MessageP,
+#[derive(Hash, PartialEq, Eq)]
+enum ExampleType {
+	MessageT,
+}
+
+impl From<i32> for ExampleType {
+	fn from(i: i32) -> Self {
+		match i {
+			_ => Self::MessageT,
+		}
+	}
+}
+
+type Callback = Box<dyn Fn() -> Box<dyn IsPage>>;
+
+fn callback<F>(f: F) -> Callback
+where
+	F: Fn() -> Box<dyn IsPage> + 'static,
+{
+	Box::new(f) as Callback
 }
 
 fn gui_main(app: &Application) {
@@ -20,12 +37,31 @@ fn gui_main(app: &Application) {
 	let window = builder.get_application_window_by("app");
 	window.set_application(Some(app));
 
-	let mut page_map: HashMap<PageType, Box<dyn IsPage>> = HashMap::new();
+	let example_map = {
+		let mut example_map: HashMap<ExampleType, Callback> = HashMap::new();
+		example_map.insert(
+			ExampleType::MessageT,
+			callback(|| Box::new(page::message::new())),
+		);
+		Rc::new(example_map)
+	};
 
-	page_map.insert(
-		PageType::MessageP,
-		Box::new(page::message::MessagePage::new()),
-	);
+	let button = builder.get_button_by("run_btn");
+	{
+		let stack = builder.get_by::<Stack>("stack1");
+		button.connect_clicked(move |_| {
+			let widget = stack
+				.get_visible_child()
+				.map(|child| stack.get_child_position(&child))
+				.and_then(|i| {
+					let t = i.into();
+					example_map.get(&t)
+				});
+			if let Some(f) = widget {
+				f().show();
+			}
+		});
+	}
 
 	window.show_all();
 }

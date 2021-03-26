@@ -29,8 +29,8 @@ pub trait BuilderI: BuilderExtManual {
 
 	gen_get_by!(get_application_window_by, gtk::ApplicationWindow);
 	gen_get_by!(get_button_by, gtk::Button);
-	gen_get_by!(get_entry, gtk::Entry);
-	gen_get_by!(get_spin, gtk::SpinButton);
+	gen_get_by!(get_entry_by, gtk::Entry);
+	gen_get_by!(get_spin_by, gtk::SpinButton);
 }
 
 impl<W: IsA<gtk::Builder>> BuilderI for W {}
