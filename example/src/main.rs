@@ -46,8 +46,8 @@ fn gui_main(app: &Application) {
 		Rc::new(example_map)
 	};
 
-	let button = builder.get_button_by("run_btn");
 	{
+		let button = builder.get_button_by("run_btn");
 		let stack = builder.get_by::<Stack>("stack1");
 		button.connect_clicked(move |_| {
 			let widget = stack

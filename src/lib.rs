@@ -5,6 +5,7 @@
 use gio::prelude::{ApplicationExt, ApplicationExtManual};
 use gtk::Application;
 
+pub mod alert;
 pub mod builder;
 
 /// 简化gtk初始函数，仅提供一个`application_id`和初始成功后的回调即可。
