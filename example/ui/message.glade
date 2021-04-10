@@ -26,7 +26,7 @@
             <property name="spacing">20</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="normal_btn">
                 <property name="label" translatable="yes">普通提示</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
@@ -39,7 +39,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="error_btn">
                 <property name="label" translatable="yes">错误提示</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
@@ -52,7 +52,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="warn_btn">
                 <property name="label" translatable="yes">警告提示</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
@@ -70,7 +70,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">不同类型的提示框</property>
+            <property name="label" translatable="yes">点击不同按钮，显示不同类型提示对话。</property>
           </object>
         </child>
       </object>
