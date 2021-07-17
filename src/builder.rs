@@ -22,7 +22,7 @@ pub trait BuilderI: BuilderExtManual {
 			Some(w) => w,
 			None => {
 				let msg = format!("{:?} not found!", name);
-				panic!(msg);
+				panic!("{}", msg);
 			}
 		}
 	}
