@@ -1,5 +1,5 @@
-use gtk::prelude::*;
-use gtk::Window;
+use golduck::gtk::prelude::*;
+use golduck::gtk::Window;
 
 use golduck::{alert::AlertI, builder::BuilderI, include_builder};
 

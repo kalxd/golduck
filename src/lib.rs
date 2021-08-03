@@ -5,6 +5,9 @@
 use gio::prelude::{ApplicationExt, ApplicationExtManual};
 use gtk::Application;
 
+pub use gio;
+pub use gtk;
+
 pub mod alert;
 pub mod builder;
 pub mod util;

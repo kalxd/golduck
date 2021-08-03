@@ -43,6 +43,6 @@ impl<W: IsA<gtk::Builder>> BuilderI for W {}
 #[macro_export]
 macro_rules! include_builder {
 	($path:literal) => {
-		gtk::Builder::from_string(include_str!($path))
+		golduck::gtk::Builder::from_string(include_str!($path))
 	};
 }

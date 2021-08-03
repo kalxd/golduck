@@ -1,5 +1,5 @@
-use gtk::prelude::*;
-use gtk::{Application, Stack};
+use golduck::gtk::prelude::*;
+use golduck::gtk::{Application, Stack};
 
 use std::collections::HashMap;
 use std::rc::Rc;
